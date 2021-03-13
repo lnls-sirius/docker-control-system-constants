@@ -11,6 +11,5 @@ services:
         - REP_CSCONSTS_VERSION=${FAC_REP_CSCONSTS_VERSION}
       labels:
         - "br.com.lnls-sirius.department=FAC"
-    command: "sleep infinity"
     ports:
       - "20081:80"

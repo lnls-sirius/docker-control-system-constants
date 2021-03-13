@@ -17,5 +17,3 @@ ARG REP_CSCONSTS_VERSION
 RUN git clone https://github.com/lnls-sirius/control-system-constants; \
     cd control-system-constants; \
     git checkout ${REP_CSCONSTS_VERSION}
-
-CMD ["/bin/bash"]
