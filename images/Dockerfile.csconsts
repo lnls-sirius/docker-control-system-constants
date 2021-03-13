@@ -3,12 +3,18 @@ FROM dockerregistry.lnls-sirius.com.br/httpd:${BASE_IMAGE_TAG}
 
 SHELL ["bash", "-c"]
 
-WORKDIR /opt
+WORKDIR /usr/local/apache2/htdocs/
 
 RUN set -e; \
     set -x; \
     \
     apt update; \
     apt -y install git nano
+
+COPY ./apache2_conf/*.conf /usr/local/apache2/conf/
+
+ARG REP_CSCONSTS_VERSION
+RUN git https://github.com/lnls-sirius/control-system-constants; \
+    git checkout ${REP_CSCONSTS_VERSION}
 
 CMD ["/bin/bash"]
