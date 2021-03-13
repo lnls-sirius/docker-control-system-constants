@@ -14,7 +14,7 @@ RUN set -e; \
 COPY ./apache2_conf/*.conf /usr/local/apache2/conf/
 
 ARG REP_CSCONSTS_VERSION
-RUN git https://github.com/lnls-sirius/control-system-constants; \
+RUN git clone https://github.com/lnls-sirius/control-system-constants; \
     git checkout ${REP_CSCONSTS_VERSION}
 
 CMD ["/bin/bash"]
