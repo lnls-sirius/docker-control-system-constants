@@ -1,0 +1,14 @@
+ARG BASE_IMAGE_TAG
+FROM dockerregistry.lnls-sirius.com.br/httpd:${BASE_IMAGE_TAG}
+
+SHELL ["bash", "-c"]
+
+WORKDIR /opt
+
+RUN set -e; \
+    set -x; \
+    \
+    apt update; \
+    apt -y install git nano
+
+CMD ["/bin/bash"]

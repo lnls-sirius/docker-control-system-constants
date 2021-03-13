@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+
+  fac-csconts:
+    image: dockerregistry.lnls-sirius.com.br/fac/fac-csconsts:${FAC_IMG_CSCONSTS_TAG}
+    build:
+      context: "."
+      dockerfile: "Dockerfile.csconsts"
+      args:
+        - BASE_IMAGE_TAG=${FAC_IMG_HTTPD_TAG}
+      labels:
+        - "br.com.lnls-sirius.department=FAC"
+    command: "sleep infinity"
+    ports:
+      - "20081:80"
