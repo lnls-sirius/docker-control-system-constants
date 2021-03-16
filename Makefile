@@ -8,7 +8,7 @@ deploy:
 	echo $(FAC_IMG_CSCONSTS_TAG) > /tmp/_DEPLOY_TAG_
 	# update image tag in .env
 	sed -i "s/FAC_IMG_CSCONSTS_TAG=.*/FAC_IMG_CSCONSTS_TAG=$(FAC_IMG_CSCONSTS_TAG)/g" ./images/.env
-	# update csconsts version i .env
+	# update csconsts version in .env
 	sed -i "s/FAC_REP_CSCONSTS_VERSION=.*/FAC_REP_CSCONSTS_VERSION=$(FAC_REP_CSCONSTS_VERSION)/g" ./images/.env
 	# create image and push to dockerregistry
 	make image-build-fac-csconsts
