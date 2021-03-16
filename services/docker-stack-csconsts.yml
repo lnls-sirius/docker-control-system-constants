@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  facs-csconsts:
+    image: dockerregistry.lnls-sirius.com.br/fac/fac-csconsts:__FAC_CSCONSTS_TAG_TEMPLATE__
+    deploy:
+      placement:
+        constraints:
+          # - node.hostname != CA-RaTim-CO-IOCSrv
+          # - node.hostname != IA-14RaDiag03-CO-IOCSrv
+          # - node.hostname != IA-16RaBbB-CO-IOCSrv
+          # - node.hostname != IA-18RaDiag04-CO-IOCSrv
+          # - node.hostname != IA-20RaDiag01-CO-IOCSrv-1
+          # - node.hostname != IA-20RaDiag01-CO-IOCSrv-2
+          # - node.hostname != IA-20RaDiag02-CO-IOCSrv-1
+          # - node.hostname != IA-20RaDiag02-CO-IOCSrv-2
+          - node.hostname != CA-RaCtrl-CO-Srv-1
+          - node.hostname != LA-RaCtrl-CO-Srv-1
+          - node.hostname != TA-TiRack-CO-FWSrv-1
+      replicas: 1
+      restart_policy:
+        condition: any
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "10"
+        max-size: "10m"
+    ports:
+      - "20080:80"
