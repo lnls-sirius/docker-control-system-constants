@@ -11,8 +11,8 @@ RUN set -e; \
     apt update; \
     apt -y install git nano
 
-COPY ./apache2_conf/httpd-mpm.conf /usr/local/apache2/conf/extra/httpd-mpm.conf
 COPY ./apache2_conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY ./apache2_conf/httpd-mpm.conf /usr/local/apache2/conf/extra/httpd-mpm.conf
 
 ARG REP_CSCONSTS_VERSION
 RUN git clone https://github.com/lnls-sirius/control-system-constants; \
