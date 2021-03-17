@@ -12,4 +12,4 @@ services:
       labels:
         - "br.com.lnls-sirius.department=FAC"
     ports:
-      - "20081:80"
+      - "20080:80"
