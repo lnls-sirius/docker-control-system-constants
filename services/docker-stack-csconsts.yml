@@ -2,6 +2,8 @@ version: "3.7"
 services:
   facs-csconsts:
     image: dockerregistry.lnls-sirius.com.br/fac/fac-csconsts:__FAC_CSCONSTS_TAG_TEMPLATE__
+    networks:
+      - host_network
     deploy:
       placement:
         constraints:
@@ -24,5 +26,8 @@ services:
       options:
         max-file: "10"
         max-size: "10m"
-    ports:
-      - "20080:80"
+
+networks:
+  host_network:
+    external:
+      name: "host"
