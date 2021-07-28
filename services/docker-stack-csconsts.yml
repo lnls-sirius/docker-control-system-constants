@@ -1,23 +1,13 @@
 version: "3.7"
+
 services:
+
   facs-csconsts:
     image: dockerregistry.lnls-sirius.com.br/fac/fac-csconsts:__FAC_CSCONSTS_TAG_TEMPLATE__
-    networks:
-      - host_network
     deploy:
       placement:
         constraints:
-          # - node.hostname != CA-RaTim-CO-IOCSrv
-          # - node.hostname != IA-14RaDiag03-CO-IOCSrv
-          # - node.hostname != IA-16RaBbB-CO-IOCSrv
-          # - node.hostname != IA-18RaDiag04-CO-IOCSrv
-          # - node.hostname != IA-20RaDiag01-CO-IOCSrv-1
-          # - node.hostname != IA-20RaDiag01-CO-IOCSrv-2
-          # - node.hostname != IA-20RaDiag02-CO-IOCSrv-1
-          # - node.hostname != IA-20RaDiag02-CO-IOCSrv-2
-          - node.hostname != CA-RaCtrl-CO-Srv-1
-          - node.hostname != LA-RaCtrl-CO-Srv-1
-          - node.hostname != TA-TiRack-CO-FWSrv-1
+          - node.hostname == IA-16RaBbB-CO-IOCSrv
       replicas: 1
       restart_policy:
         condition: any
@@ -26,6 +16,8 @@ services:
       options:
         max-file: "10"
         max-size: "10m"
+    networks:
+      - host_network
 
 networks:
   host_network:
